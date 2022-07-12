@@ -1,41 +1,23 @@
-import sys
-
-def group(array):
-    list_of_groups = []
-    list_of_inner_groups = []
-    last_number = array[0]
-
-    list_of_inner_groups.append(last_number)
+def sum_of_numbers(input):
+    sum = 0
+    num = ""
     
-    for i in range(1, len(array)):
-        current_number = array[i]
-        
-        if current_number == last_number:
-            list_of_inner_groups.append(current_number)
+    for character in input:
+        if character.isdigit():
+            num += character
         else:
-            list_of_groups.append(list_of_inner_groups)
-            list_of_inner_groups = []
-            list_of_inner_groups.append(current_number)
+            if num != "":
+                sum += int(num)
+                num = ""
 
-        last_number = current_number
+    # ако е останало от последната итерация
+    if num != "":
+        sum += int(num)
 
-    if len(list_of_inner_groups) != 0:
-        list_of_groups.append(list_of_inner_groups)
-    return list_of_groups
+    return sum
 
-
-def max_consecutive(array):
-    biggest_group_count = -sys.maxsize
-
-    list_of_groups = group(array)
-    for current_group in list_of_groups:
-        if biggest_group_count < len(current_group):
-            biggest_group_count = len(current_group)
-    return biggest_group_count
-        
-
-
-#print(group([1, 1, 1, 2, 3, 1, 1]))
-#print(group([1, 2, 1, 2, 3, 3]))
-print(max_consecutive([1, 2, 3, 3, 3, 3, 4, 3, 3]))
-print(max_consecutive([1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 5]))
+print(sum_of_numbers("ab125cd3"))
+print(sum_of_numbers("ab12"))
+print(sum_of_numbers("ab"))
+print(sum_of_numbers("123ab"))
+print(sum_of_numbers("44s2"))

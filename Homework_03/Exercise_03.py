@@ -1,14 +1,15 @@
-def count_words(arr):
-    count_dictionary = {}
+def nan_expand(times):
+    #'"' escape-ва кавички 
+    output = "\""
 
-    for element in arr:
-        # if element in count_dictionary 
-        if count_dictionary.get(element) == None:
-            count_dictionary[element] = 1
-        else:
-            count_dictionary[element] += 1
-            
-    return count_dictionary
+    for i in range(0, times):
+        output += "Not a " 
+    if times != 0:
+        output += "NaN"
 
-print(count_words(["apple", "banana", "apple", "pie"]))
-print(count_words(["python", "python", "python", "ruby"]))
+    return output + "\""
+
+print(nan_expand(0))
+print(nan_expand(1))
+print(nan_expand(2))
+print(nan_expand(3))

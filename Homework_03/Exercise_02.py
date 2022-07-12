@@ -1,19 +1,14 @@
-def is_anagram(fst_word, snd_word):
-    needed_characters = 0
-    for i in range(0, len(fst_word)):
-        first_word_character = fst_word[i].lower()
+def count_words(arr):
+    count_dictionary = {}
 
-        for j in range(0, len(snd_word)):
-            second_word_character = snd_word[i].lower()
+    for element in arr:
+        # if element in count_dictionary 
+        if count_dictionary.get(element) == None:
+            count_dictionary[element] = 1
+        else:
+            count_dictionary[element] += 1
+            
+    return count_dictionary
 
-            if first_word_character == second_word_character:
-                needed_characters += 1
-    
-    print(needed_characters)
-    if needed_characters == len(fst_word):
-        return True
-    return False
-
-print(is_anagram("BRADE", "BeaRD"))
-print(is_anagram("TOP_CODER", "COTO_PRODE"))
-
+print(count_words(["apple", "banana", "apple", "pie"]))
+print(count_words(["python", "python", "python", "ruby"]))
