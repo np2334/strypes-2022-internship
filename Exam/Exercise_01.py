@@ -20,6 +20,8 @@ def find_books(list_of_books, book_partial_title):
                 
                 if isFullMatch:
                     found_books.append(book)
+                    # ако търсената дума се повтаря ще я добавя няколко пъти, затова break-вам
+                    break
     return found_books
 
 
@@ -40,6 +42,14 @@ book_name = "The chamber"
 print(find_books(library, book_name))
 
 print(find_books([], "Non Existing Book"))
+
+library = [
+    "Harry Potter and the Philosopher's StoneHarry Potter", 
+    "Harry Potter and the Chamber of Secrets", 
+    "The Adventures of Sherlock Holmes", 
+    "The Chamber"]
+book_name = "Harry Potter"
+print(find_books(library, book_name))
 
 #print(to_lower("A"))
 #print(to_lower("Z"))
