@@ -12,9 +12,8 @@ def roman_to_integer(roman_number_string):
     sum = 0
     i = 0
     while i < len(roman_number_string):
-        if True:
-            currentCharacter = roman_number_string[i]
-            nextCharacterIndex = i + 1
+        currentCharacter = roman_number_string[i]
+        nextCharacterIndex = i + 1
 
         if nextCharacterIndex < len(roman_number_string):
             if currentCharacter == 'I' and (roman_number_string[nextCharacterIndex] == 'V' or roman_number_string[nextCharacterIndex] == 'X'):
