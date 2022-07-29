@@ -1,0 +1,21 @@
+{
+  "DarkMagician": {
+    "health": "80",
+    "attack_power": "0.0",
+    "abilities": {
+      "shadow_bolt": "30",
+      "drain_health": "3",
+      "summon_imp": ["15", "7"]
+    }
+  },
+
+  "Crusader": {
+    "health": "135",
+    "attack_power": "0.0", 
+    "abilities": {
+      "strike": "50",
+      "crusade_strike": ["12", "2", "3"],
+      "holy_heal": "10"
+    }
+  }
+}

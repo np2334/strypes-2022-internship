@@ -1,0 +1,2 @@
+TestName=[0, 2]
+SecondPlayer=[2, 1]
