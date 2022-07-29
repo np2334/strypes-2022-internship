@@ -1,8 +1,13 @@
-from array import array
 from Objects import Game
-from Characters import Crusader
 
-game = Game()
+should_restart = True
+while should_restart:
+    should_restart = False
+    game = Game()
+    should_restart = game.should_restart()
+
+
+
 
 
 

@@ -1,3 +1,4 @@
+#идеята на Entity class-а е да може да има примерно class Imp(Entity) или class Totem(Entity)
 class Entity:
     def __init__(self, health):
         self._health = health
@@ -12,12 +13,14 @@ class Entity:
         if damage_points > 0:
             if self._health - damage_points < 0:
                 self._health = 0
-            self._health -= damage_points
+            else:
+                self._health -= damage_points
 
 class Character(Entity):
     def __init__(self, health, attack_power):
         super().__init__(health)
         self._max_health = health
+        # идеята ми беше да има възможност да се добавят примерно buff-ове, които могат да увелчиат атакат на героя
         self._attack_power = attack_power
         self._effects = []
 
@@ -52,7 +55,8 @@ class Character(Entity):
 
         if self._health + healing_points > self._max_health:
             self._health = self._max_health
-        self._health += healing_points
+        else:
+            self._health += healing_points
 
         return True    
 
@@ -72,7 +76,11 @@ class Crusader(Character):
         if self == target:
             is_buff = True
 
-        target.add_effect(Effect("Holy damage", int(crusade_strike[1]), int(crusade_strike[2]), is_buff))
+        round_duration = int(crusade_strike[1])
+        power = int(crusade_strike[2])
+        target.add_effect(Effect("Holy damage", round_duration, power, is_buff))
+        print("\tHoly damage applied. {} {} each round ({} rounds).".format(power, "damage" if not is_buff else "health", round_duration))
+        return True
 
     def holy_heal(self, target, holy_heal):
         if self != target:
@@ -86,8 +94,6 @@ class Crusader(Character):
 class DarkMagician(Character):
     def __init__(self, health, attack_power):
         super().__init__(health, attack_power)
-        self.__is_imp_summoned = False
-        self.__imp = None
 
     def shadow_bolt(self, target, shadow_bolt):
         if target == self:
@@ -103,27 +109,10 @@ class DarkMagician(Character):
         drained_health = drain_health * 3
         target.take_damage(drained_health)
         self.take_healing(drained_health)
+        print("\tDrained {} health.".format(drained_health))
         return True
-
-    def summon_imp(self, target, summon_imp):
-        if target != self:
-            return False
-
-        self.__is_imp_summoned = True
-        self.__imp = Imp(summon_imp[0], summon_imp[1])
-        return True
-
-
-
-class Imp(Entity):
-    def __init__(self, summon_imp):
-        super().__init__(summon_imp[0])
-        self.__damage = summon_imp[1]
     
-    def do_damage(self, target, imp):
-        target.take_damage(self.__damage)
 
-    
 
 class Effect:
     def __init__(self, name, round_duration, power, is_buff):

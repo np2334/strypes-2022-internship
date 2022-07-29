@@ -4,18 +4,19 @@
     "attack_power": "0.0",
     "abilities": {
       "shadow_bolt": "30",
-      "drain_health": "3",
-      "summon_imp": ["15", "7"]
-    }
+      "drain_health": "3"
+    },
+    "description": "\tDarkMagician:\n\t\tshadot_bolt - 30 damage (target)\n\t\tdrain_health - drains 9 health points from the target (target)"
   },
 
   "Crusader": {
     "health": "135",
     "attack_power": "0.0", 
     "abilities": {
-      "strike": "50",
-      "crusade_strike": ["12", "2", "3"],
+      "strike": "20",
+      "crusade_strike": ["10", "3", "6"],
       "holy_heal": "10"
-    }
+    },
+    "description": "\tCrusader:\n\t\tstrike - 20 damage (target)\n\t\tcrusade_strike - does 10 damage and applies \"Holy damage\" effect for 3 rounds (target 6 damage per round | self 6 health points per round)\n\t\tholy_heal - heals for 10 health points (self)"
   }
 }
